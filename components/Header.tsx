@@ -38,9 +38,15 @@ const Header: React.FC = () => {
       <div className="bg-gray-50 text-gray-600 py-1 px-4 text-xs hidden md:block border-b border-gray-100">
         <div className="max-w-7xl mx-auto flex justify-end space-x-6">
           {utilityLinks.map((link) => (
-            <a key={link.name} href={link.path} className="hover:text-[#003366] transition-colors uppercase tracking-wider font-semibold">
-              {link.name}
-            </a>
+            link.path.startsWith('/') ? (
+              <Link key={link.name} to={link.path} className="hover:text-[#003366] transition-colors uppercase tracking-wider font-semibold">
+                {link.name}
+              </Link>
+            ) : (
+              <a key={link.name} href={link.path} className="hover:text-[#003366] transition-colors uppercase tracking-wider font-semibold">
+                {link.name}
+              </a>
+            )
           ))}
         </div>
       </div>
@@ -61,9 +67,8 @@ const Header: React.FC = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`font-semibold text-sm transition-colors hover:text-[#FFCC00] uppercase tracking-wide ${
-                isActive(link.path) ? 'text-[#003366] border-b-2 border-[#FFCC00]' : 'text-gray-700'
-              }`}
+              className={`font-semibold text-sm transition-colors hover:text-[#FFCC00] uppercase tracking-wide ${isActive(link.path) ? 'text-[#003366] border-b-2 border-[#FFCC00]' : 'text-gray-700'
+                }`}
             >
               {link.name}
             </Link>
@@ -85,18 +90,23 @@ const Header: React.FC = () => {
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`text-lg font-bold uppercase tracking-wide ${
-                  isActive(link.path) ? 'text-[#003366]' : 'text-gray-600'
-                }`}
+                className={`text-lg font-bold uppercase tracking-wide ${isActive(link.path) ? 'text-[#003366]' : 'text-gray-600'
+                  }`}
               >
                 {link.name}
               </Link>
             ))}
             <div className="pt-4 border-t border-gray-100 flex flex-col space-y-3">
               {utilityLinks.map((link) => (
-                <a key={link.name} href={link.path} className="text-gray-500 uppercase text-sm font-semibold">
-                  {link.name}
-                </a>
+                link.path.startsWith('/') ? (
+                  <Link key={link.name} to={link.path} onClick={() => setIsOpen(false)} className="text-gray-500 uppercase text-sm font-semibold">
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a key={link.name} href={link.path} className="text-gray-500 uppercase text-sm font-semibold">
+                    {link.name}
+                  </a>
+                )
               ))}
             </div>
           </div>
