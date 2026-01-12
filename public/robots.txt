@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://iqra.edu.pk/sitemap.xml
+Sitemap: https://iqra-university-clone.vercel.app/sitemap.xml
