@@ -14,7 +14,7 @@ useEffect(() => {
   script.onload = () => {
     if (window.CustomerAgentWidget) {
       window.CustomerAgentWidget.init({
-        websiteId: 24,
+        websiteId: 26,
         apiUrl: "https://synovially-screwed-phebe.ngrok-free.dev"
       });
     }
